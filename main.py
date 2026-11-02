@@ -1,12 +1,21 @@
 if __name__ == "__main__":
 
 
-    stringa = input("Inserisci una parola da trasformare con il Burrows-Wheeler: ")
+    parola = input("Inserisci una parola da trasformare con il Burrows-Wheeler: ")
 
-    array_parola = list(stringa)
+    arrParola = list(parola)
+    copiaArr = arrParola
+    arrFinale = []
+    copiaArr.append("$")
 
-    for i in range(len(array_parola) -1, -1 , -1 ) : 
-        print(array_parola[i] , end = "")
+    for i in range(0, len(copiaArr)):
+        arrFinale.append("".join(copiaArr))
+        copiaArr.insert(len(copiaArr), copiaArr[0])
+        copiaArr.pop(0)
+        
 
-
+    print(arrFinale)
+    arrFinale.sort()
+    
+    print(arrFinale)
 
