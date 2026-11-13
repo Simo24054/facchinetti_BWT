@@ -1,4 +1,5 @@
 import socket
+import main
 
 # Crea un socket TCP (SOCK_STREAM) che usa indirizzi IPv4 (AF_INET).
 # Il costrutto with chiude automaticamente il socket al termine del blocco.
@@ -33,4 +34,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
         # Rimanda al client gli stessi byte ricevuti (echo).
         # sendall() garantisce l'invio di tutti i byte del messaggio,
         # mentre send() potrebbe inviarne solo una parte.
-        conn.sendall(messaggio)
+        conn.sendall(main.funzione_aura(messaggio).encode())
