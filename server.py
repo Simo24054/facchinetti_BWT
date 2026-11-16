@@ -22,16 +22,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
     with conn:
         print("Client connesso:", addr)
 
-        # Mostra IP e porta locali del socket di connessione:
-        # sono gli stessi del socket di ascolto.
         print("Socket di connessione:", conn.getsockname())
 
-        # Riceve fino a 1024 byte dal client.
-        # decode() converte i byte ricevuti in una stringa.
-        messaggio = conn.recv(1024)
-        print("Messaggio ricevuto:", messaggio.decode())
+        messaggio = conn.recv(1024).decode()
+        
+        print("Messaggio ricevuto:", messaggio)
 
-        # Rimanda al client gli stessi byte ricevuti (echo).
-        # sendall() garantisce l'invio di tutti i byte del messaggio,
-        # mentre send() potrebbe inviarne solo una parte.
-        conn.sendall(main.funzione_aura(messaggio).encode())
+        conn.sendall(main.trasformata_bwt(messaggio).encode())

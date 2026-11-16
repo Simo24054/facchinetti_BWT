@@ -1,10 +1,10 @@
-def funzione_aura(parola: str):
+def trasformata_bwt(parola: str):
     arrParola = list(parola)
     arrFinale = []
     arrParola.append("$")
 
     for i in range(0, len(arrParola)):
-        arrFinale.append(arrParola)
+        arrFinale.append(arrParola.copy())
         arrParola.insert(len(arrParola), arrParola[0])
         arrParola.pop(0)
         
@@ -28,4 +28,4 @@ def funzione_aura(parola: str):
 
 if __name__ == "__main__":
     parola = input("Inserisci una parola da trasformare con il Burrows-Wheeler: ")
-    funzione_aura(parola)
+    trasformata_bwt(parola)
