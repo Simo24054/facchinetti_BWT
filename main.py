@@ -10,7 +10,25 @@ def trasformata_bwt(parola: str):
         
     print("\nrotazione parola: ")
     print(arrFinale)
-    arrFinale.sort()
+    parola = parola + "$"
+    rotazioni = []
+
+    
+    for i in range(len(parola)):
+        rotazioni.append(parola[i:] + parola[:i])
+
+    n = len(rotazioni)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if rotazioni[j] > rotazioni[j + 1]:
+                temp = rotazioni[j]
+                rotazioni[j] = rotazioni[j + 1]
+                rotazioni[j + 1] = temp
+
+    
+    risultato = ""
+    for r in rotazioni:
+        risultato = risultato + r[-1]
 
     print("\nrotazioni ordinate: ")
     print(arrFinale)
